@@ -12,9 +12,6 @@ uci -q batch <<-EOF
 EOF
 uci commit system
 
-sed -i 's/root::0:0:99999:7:::/root:$1$5mjCdAB1$Uk1sNbwoqfHxUmzRIeuZK1:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$5mjCdAB1$Uk1sNbwoqfHxUmzRIeuZK1:0:0:99999:7:::/g' /etc/shadow
-
 # 设置默认主题为argon
 uci set luci.main.mediaurlbase='/luci-static/argon'
 uci commit luci
@@ -51,11 +48,6 @@ uci commit dhcp
 # 默认wan口防火墙打开
 uci set firewall.@zone[1].input='ACCEPT'
 uci commit firewall
-
-sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
-echo "DISTRIB_REVISION=' By JayKwok'" >> /etc/openwrt_release
-sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='OpenWrt-$(date +%Y%m%d)'" >> /etc/openwrt_release
 
 # diagnostics
 uci set luci.diag.dns='www.qq.com'
