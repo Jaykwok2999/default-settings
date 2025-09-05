@@ -68,13 +68,5 @@ if [ "$( opkg list-installed 2>/dev/null| grep -c "^dnsmasq")" -ne '0' ];then
   /etc/init.d/dnsmasq restart
 fi
 
-# extra packages
-echo "src/gz kwrt_core https://dl.openwrt.ai/releases/24.10/targets/x86/64/6.6.93" >> /etc/opkg/distfeeds.conf
-echo "src/gz kwrt_base https://dl.openwrt.ai/releases/24.10/packages/x86_64/base" >> /etc/opkg/distfeeds.conf
-echo "src/gz kwrt_packages https://dl.openwrt.ai/releases/24.10/packages/x86_64/packages" >> /etc/opkg/distfeeds.conf
-echo "src/gz kwrt_luci https://dl.openwrt.ai/releases/24.10/packages/x86_64/luci" >> /etc/opkg/distfeeds.conf
-echo "src/gz kwrt_routing https://dl.openwrt.ai/releases/24.10/packages/x86_64/routing" >> /etc/opkg/distfeeds.conf
-echo "src/gz kwrt_kiddin9 https://dl.openwrt.ai/releases/24.10/packages/x86_64/kiddin9" >> /etc/opkg/distfeeds.conf
-
 
 exit 0
